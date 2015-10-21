@@ -39,7 +39,8 @@ describe('shoppingCart', function() {
     var item2 = new Item("coffee", 3.45);
     cart.addItem(item1);
     cart.addItem(item2);
-    expect(cart.total()).toEqual(4.65);
+    cart.takeTotal();
+    expect(cart.total).toEqual(4.65);
   })
 
   it('can take a percentage discount from the total price', function() {
@@ -48,7 +49,9 @@ describe('shoppingCart', function() {
     var item2 = new Item("coffee", 3.45);
     cart.addItem(item1);
     cart.addItem(item2);
-    expect(cart.takeDiscount(0.3)).toEqual(3.26);
+    cart.takeTotal();
+    cart.takeDiscount(0.3);
+    expect(cart.total).toEqual(3.26);
   })
 })
 
